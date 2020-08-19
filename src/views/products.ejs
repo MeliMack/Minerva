@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Productos'}) %>
+
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<br></br><br></br><br></br><br></br><br></br><br></br><br><br>
+	<!-- todos los productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Nuestros Productos</h2>
+			</div>
+		 	<!--Para que me repita este maquetado tantas veces como productos tenga-->
+			<% for(i=0; i<products.length ; i++){%>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<!--para que cuando hago click en un producto me lleve al detalle: <%products[i].id %>"-->
+						<a href="/products/detail/<%= products[i].id %>">
+							<figure class="product-box_image">
+								<img src="/images/products/<%=products[i].image %>" alt="<%=products[i].name %>">
+							</figure>
+							<article class="product-box_data">
+								<h2>$<%=products[i].price %>,00</h2>
+								<p><%=products[i].name %></p>
+							
+							</article>
+						</a>
+					</section>
+				</div>
+			<%}%>
+			
+		
+		</div>
+	</div>
+	
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	
+</body>	
+</html>

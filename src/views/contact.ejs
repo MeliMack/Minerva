@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+         <!-- Include Head -->
+<%- include('partials/head', {title: 'contact'}) %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body>
+     <!-- Header -->
+     <%- include('partials/headerNavbar') %>
+     <br></br><br></br><br></br><br></br><br></br><br></br><br><br>
+ <div class="container-contact">
+     <h2 class="msg">DEJANOS TU MENSAJE</h2>
+     <br>
+    <div class="row">
+        <div class="col-12 col-sm-8">
+            
+            <form action="" method="post" alt="responsive form"></form>
+            <label for="nombre" class="form-label">NOMBRE:</label>
+            <input type="text" class="form-control" id="nombre">
+
+            <label for="telefono" class="form-label">TELEFONO (Opcional):</label>
+            <input type="text" class="form-control" id="telefono">
+
+            <label for="email" class="form-label">EMAIL:</label>
+           <input type="email" class="form-control" id="email">    
+
+           <label for="mensaje" class="form-label">MENSAJE:</label>
+           <textarea name="mensaje" id="mensaje" class="form-control" ></textarea>
+             <br>
+           <div class="col-3">
+            <button type="submit" class="buy-now-button">ENVIAR</button>
+           </div>
+           </form>
+        </div>
+            
+               
+        <div class="col-12 col-sm-4">
+            <br>
+            <h3>ATENCION AL CLIENTE</h3>
+            <h5>Tel:54 11 4725-1438</h5>
+            <h5>Tel:54 11 4725-1459</h5>
+            <h5>contacto@minerva.com.ar</h5>
+            
+        
+        </div>
+        
+      
+    </div> 
+</div>   
+<!-- footer -->
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+       <!-- Include Head -->
+<%- include('partials/head', {title: 'Crear cuenta'}) %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+</head>
+<body>
+    <!-- Header -->
+    <%- include('partials/headerNavbar') %>
+    <br></br><br></br><br></br><br></br><br></br><br></br></br><br>
+
+    <form class="container-login" action="" method="post">
+        <h2 class="msg">CREAR CUENTA</h2>
+        <br>
+       <div class="row">
+           <div class="col-12 col-sm-6">
+            <label for="nombre" class="form-label">NOMBRE:</label>
+            <input type="text" class="form-control" name="name" id="nombre">
+
+            <label for="email" class="form-label">EMAIL:</label>
+            <input type="email" class="form-control" name="email" id="email">
+
+            <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
+            <input type="password" class="form-control"name="password" id="exampleInputPassword1" placeholder="Hasta 12 caracteres">  
+
+            <label for="exampleInputPassword1" class="form-label">CONFIRMAR CONTRASEÑA</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="repassword" placeholder="Confirme su contraseña">  
+            <br>
+            <button type="submit" class="btn-1 btn-primary btn-lg btn-block">Iniciar Sesion</button> 
+          </div>
+        
+        </div>
+    </form>
+    
+    
+    <form class="container-form" >
+        
+        
+ <!-- Footer -->
+ <%- include('partials/footer') %>
+</body>
+
+</html>
