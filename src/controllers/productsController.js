@@ -19,7 +19,7 @@ let ultimoId= function(){
 }
 
 //RENDERIZO LAS VISTAS//
-const controller = {
+const productsController = {
 	// Root - ALL PRODUCTS (RUTA EN PRODUCTS.JS)
 	root: (req, res) => {
 		res.render("products",{
@@ -56,7 +56,8 @@ const controller = {
 			discount:req.body.discount,
 			category: req.body.category,
 			description:req.body.description,
-			
+			image:req.files[0].filename
+
 		}
 		//Hago un push para traer el producto posteado, con el modulo fs y la ruta indico donde guardarlo. Antes de guardarlo en el JSON le tengo que hacer un stringify
 		products.push(nuevoProducto);
@@ -91,7 +92,18 @@ const controller = {
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 		// Do the magic
+		for (let i = 0; i < productsPARSED.length; i++) {
+			   if (productsPARSED[i].productID == req.params.productId) {
+			      productsPARSED.splice(i, 1);
+			      let newProductsJSON = JSON.stringify(productsPARSED)
+			      fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), newProductsJSON);
+			      return res.redirect('/');
+			         }
+			      }
+			      res.send('Error de delete product')
+			
+
 	}
 };
 
-module.exports = controller;
+module.exports = productsController;

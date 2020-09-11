@@ -2,6 +2,8 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+//EXPRESS VALIDATOR
+const {check, validationResult, body} =require("express-validator");
 
 //creo una variable que lea lo contenido en la base de datos
 let usuarios = fs.readFileSync( path.join(__dirname, '../data/users.json'), "utf8")
@@ -18,19 +20,26 @@ ultimoUsuario=usuarios[i].id //entonces asignarle ese id a ultimo usuario. ultim
 
 const saveRegisterController = {
 	save: (req, res) => {
+       let errores=validationResult(req);
+      if(errores.isEmpty()){
 		let nuevoUsuario={
             id: ultimoUsuario +1,
             name: req.body.name, //requiero los datos del formulario para que me los muestre
             email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10) //para encriptar el password
+            avatar:(req.files[0])? req.files[0].filename:"default.png",
+            password: bcrypt.hashSync(req.body.password, 10) //para encriptar el password    
         };
-
         usuarios.push(nuevoUsuario);//hago un push de todos los usuarios de la base
         fs.writeFileSync(path.join(__dirname, '../data/users.json') ,JSON.stringify(usuarios)) //convierte en JSON al array
         res.redirect('/login');
-        
+    }else{
+            res.render("register",{
+            errores:errores.mapped()
+        });
+    }  
 
     },
+    
 	};
 
 module.exports = saveRegisterController;
