@@ -12,18 +12,21 @@
     <%- include('partials/headerNavbar') %>
     <br></br><br></br><br></br><br></br><br></br><br></br></br><br>
 
-    <form class="container-login" action="" method="POST">
+    <form class="container-login" action="" id="formulario" method="POST">
         <h2 class="msg">LOGIN</h2>
         <br>
        <div class="row">
            <div class="col-12 col-sm-6">
             <label for="email" class="form-label">EMAIL:</label>
             <input type="email" class="form-control" id="email"name="email">
-
+            <small class="text-danger"><%= (typeof errores != "undefined"&& errores.email) ? errores.email.msg:"" %></small>
+            <small id="errorEmail"class="text-alert"></small>
+            <br>    
             <label for="Password" class="form-label">CONTRASEÑA</label>
             <input type="password" class="form-control" id="Password"name="password">  
+            <small id="errorPassword"class="text-alert"></small>
             <br>
-            <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+            <input class="form-check-input" type="checkbox" id="recordame" name="recordame">
             <label class="form-check-label" for="autoSizingCheck">Recordame</label>
             <br><br>
             <button type="submit" class="btn-1 btn-primary btn-lg btn-block">Iniciar Sesion</button> 
@@ -38,6 +41,8 @@
         
  <!-- Footer -->
  <%- include('partials/footer') %>
+
+ <script src="/js/loginValidator.js"></script>
 </body>
 
 </html>

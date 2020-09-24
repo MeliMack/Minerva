@@ -3,32 +3,19 @@
 
 const logger = require('morgan');
 
-
-//EXPRESS
 const express = require('express');
 const app = express();
-
-//OVERRIDE
 const methodOverride =  require('method-override'); // Requiero Metodo Override. Para poder usar los métodos PUT y DELETE
-
-//PATH
 const path = require('path');
-
-//SESSION 
 const session=require("express-session");
-
 const cookieParser = require('cookie-parser');
 
 app.use(express.static(path.join(__dirname, '../public')));  // Necesario para los archivos estáticos en el folder /public
-
 //Gracias a estas dos lineas se pueden leer los POST en JSON
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
 app.use(methodOverride('_method')); // Le doy uso al metodo OverRide. Para poder pisar el method="POST" en el formulario por PUT y DELETE
-
 app.use(session({secret:"login"}));
-
 app.use(logger('dev'));
 app.use(cookieParser());
 
@@ -46,7 +33,7 @@ const aboutRouter = require('./routes/about'); // Rutas /about
 const faqRouter = require('./routes/faq'); // Rutas /faq
 const contactRouter = require('./routes/contact'); // Rutas /contact
 const loginRouter = require('./routes/login'); // Rutas /login
-const welcomeRouter = require('./routes/login');
+const welcomeRouter = require('./routes/welcome');
 const registerRouter = require('./routes/register'); // Rutas /register
 const cartRouter = require('./routes/cart'); // Rutas /cart
 

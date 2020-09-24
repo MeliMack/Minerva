@@ -6,7 +6,7 @@ var storage = multer.diskStorage({
     cb(null, path.join(__dirname,"../../public/uploads/products"));//ruta donde quiero guardar la imagen
   },
   filename: function (req, file, cb) {
-    cb(null, `image-${Date.now()+path.extname(file.originalname)}`)//nombre y extension de la imagen
+    cb(null, `image-${req.body.name}$-${Date.now()+path.extname(file.originalname)}`)//nombre y extension de la imagen
   }
 })
 

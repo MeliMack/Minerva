@@ -27,9 +27,9 @@ router.post('/create/',productMulter.any(), productsController.store);
 //Mediante metodo GET para visualizar formulario de edicion
 router.get('/edit/:productId', productsController.edit); 
 //Metodo PUT, para realizar la edicion y guardar los datos actualizados 
-router.put('/edit/:productId', productsController.update); 
+router.post('/edit/:productId', productsController.update); 
 
 //ELIMINAR PRODUCTO
-router.delete('/delete/:productId', productsController.destroy); 
+router.post('/delete/:productId', productsController.delete); 
 
 module.exports = router;

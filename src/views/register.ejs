@@ -12,29 +12,33 @@
     <%- include('partials/headerNavbar') %>
     <br></br><br></br><br></br><br></br><br></br><br></br></br><br>
 
-    <form class="container-login" action="" method="post" enctype="multipart/form-data">
+    <form class="container-login" action="" id="formulario" method="post" enctype="multipart/form-data">
         <h2 class="msg">CREAR CUENTA</h2>
         <br>
         <div class="row">
            <div class="col-12 col-sm-6">
             <label for="nombre" class="form-label">NOMBRE:</label>
             <input type="text" class="form-control" name="name" id="nombre">
+            <small class="text-danger"><%= (typeof errores != "undefined"&& errores.name) ? errores.name.msg:"" %></small>
+            <small id="errorNombre"class="text-alert"></small>
             <br>
             <label for="email" class="form-label">EMAIL:</label>
             <input type="email" class="form-control" name="email" id="email">
             <small class="text-danger"><%= (typeof errores != "undefined"&& errores.email) ? errores.email.msg:"" %></small>
+            <small id="errorEmail"class="text-alert"></small>
             <br>
-            <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
-            <input type="password" class="form-control"name="password" id="exampleInputPassword1" placeholder="Hasta 12 caracteres">  
+            <label for="password" class="form-label">CONTRASEÑA</label>
+            <input type="password" class="form-control"name="password" id="password" placeholder="Hasta 12 caracteres">  
             <small class="text-danger"><%= (typeof errores != "undefined"&& errores.password) ? errores.password.msg:"" %></small>
+            <small id="errorPassword"class="text-alert"></small>
             <br>
-            <label for="exampleInputPassword1" class="form-label">CONFIRMAR CONTRASEÑA</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="repassword" placeholder="Confirme su contraseña">  
+            <label for="repassword" class="form-label">CONFIRMAR CONTRASEÑA</label>
+            <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Confirme su contraseña">  
 
             <form>
                 <div class="form-group">
-                  <label for="exampleFormControlFile1"></label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar">
+                  <label for="avatar"></label>
+                  <input type="file" class="form-control-file" id="avatar" name="avatar">
                 </div>
             </form>
 
@@ -44,14 +48,13 @@
           </div>
         
         </div>
-
-        
+      
     </form>
-    
-              
         
  <!-- Footer -->
  <%- include('partials/footer') %>
+
+ <script src="/js/registerValidator.js"></script>
 </body>
 
 </html>

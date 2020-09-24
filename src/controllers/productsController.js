@@ -2,10 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-//const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+let products = fs.readFileSync( path.join(__dirname, '../data/productsDataBase.json'), "utf8")
+products = JSON.parse(products);
 
 //Para que se recorran todos los productos e identifique ultimo numero de id 
 let ultimoId= function(){
@@ -35,8 +34,8 @@ const productsController = {
 				return res.render("detail",{
 				product:products [i]
 			});
-			}
 		}
+	}
 		//EN CASO NO EXISTA EL PRODUCTO SELECCIONADO PUEDO MOSTRAR UN MENSAJE O REDIRIGIR. DEBAJO MUESTRO UN MSJ
 		res.send("No encontramos un producto con esas caracteristicas");	
 	},
@@ -53,10 +52,8 @@ const productsController = {
 			id: ultimoId (products) +1,
 			name: req.body.name,
 			price: req.body.price,
-			discount:req.body.discount,
-			category: req.body.category,
 			description:req.body.description,
-			image:req.files[0].filename
+			image:req.files[0],
 
 		}
 		//Hago un push para traer el producto posteado, con el modulo fs y la ruta indico donde guardarlo. Antes de guardarlo en el JSON le tengo que hacer un stringify
@@ -70,7 +67,7 @@ const productsController = {
 		for(let i=0; i<products.length; i++){
 			if(products[i].id==req.params.productId){
 				return res.render("product-edit-form",{
-				product:products [i]
+				product:products[i]
 				});
 			}
 		}
@@ -86,18 +83,16 @@ const productsController = {
 				res.redirect("/products");
 			}
 		}
-		res.send("No encontramos un producto con esas caracteristicas");
+		console.log("No encontramos un producto con esas caracteristicas");
 	},
 
 	// Delete - Delete one product from DB
-	destroy : (req, res) => {
-		// Do the magic
-		for (let i = 0; i < productsPARSED.length; i++) {
-			   if (productsPARSED[i].productID == req.params.productId) {
-			      productsPARSED.splice(i, 1);
-			      let newProductsJSON = JSON.stringify(productsPARSED)
-			      fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), newProductsJSON);
-			      return res.redirect('/');
+	delete : (req, res) => {
+	
+		for (let i = 0; i < products.length; i++) {
+			   if (products[i].id == req.params.productId) {
+			      products.splice(i, 1);
+			      
 			         }
 			      }
 			      res.send('Error de delete product')

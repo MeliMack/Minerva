@@ -24,17 +24,18 @@ router.get('/', registerController.root); /* GET - register page */
 
 router.post('/',avatarMulter.any(),[
     check('email').isEmail().withMessage("Debes ingresar un email valido"),
-      //validacion custom para ver si el usuario ya esta registrado
-    //body('email').custom(function(value){
-    //   for(let i=0 ; i<usuarios.length; i++){
-    //      if(usuarios[i].email=value){
-     //           return false
-    //      }
-    //    };
-    //    return true
-    //}).withMessage("Este usuario ya se encuentra registrado"),   
+     //validacion custom para ver si el usuario ya esta registrado
+    body('email').custom(function(value){
+       for(let i=0 ; i<usuarios.length; i++){
+          if(usuarios[i].email==value){
+                return false
+          }
+        };
+        return true
+    }).withMessage("Este usuario ya se encuentra registrado"),   
     
-    check("password").isLength({min:6, max:12}).withMessage("La contraseña debe tener al menos 6 caracteres")
+    check("password").isLength({min:6, max:12}).withMessage("La contraseña debe tener al menos 6 caracteres"),
+    check("name").isLength({min:2}).withMessage("Debe contener al menos 2 caracteres")
 ], saveRegisterController.save); /* POST - register page */
 
 

@@ -9,4 +9,6 @@ const cartController = require('../controllers/cartController');
 //RUTA CONTACT
 router.get('/', cartController.root); /* GET - cart page */
 
+//router.post('/add', cartController.add);
+
 module.exports = router;

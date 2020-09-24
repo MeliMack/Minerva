@@ -13,14 +13,15 @@
 			<div class="col-12">
 				<h2 class="products-title" alt="Responsive image">Estas Editando: <%= product.name %> </h2>
 			</div>
-		</div>
+		</div>	
 		<div class="col-12">
-			<form action="/products/edit/<%= product.id %>?_method=PUT" method="POST">
+			<form action="/products/edit/<%= product.id %>" id="formprod" method="POST"enctype="multipart/form-data">
 				<div class="row product-detail">
 					<div class="col-12 col-md-6">
 						<!-- con la propiedad value los campos ya vienen completos, listos para editar: value= <%= product.name %>  -->
 						<label for="name" class="form-label">Nombre del producto:</label>
 						<input type="text" id="name" name="name" placeholder="Ej: Shampoo Solido" class="form-input" value= <%= product.name %>>
+						<small id="errorName"class="text-alert"></small>
 					</div>
 					<div class="col-12 col-md-6">
 						<label for="price" class="form-label">Precio del producto:</label>
@@ -30,11 +31,17 @@
 					<div class="col-12">
 						<label for="description" class="form-label">Descripción:</label>
 						<textarea name="description" id="description" class="form-input"><%= product.description %></textarea>
+						<small id="errorDescripcion"class="text-alert"></small>
 					</div>
+					<div class="form-group">
+						<label for="image"></label>
+						<input type="file" class="form-control-file" id="image" name="image">
+					  </div>
 					<div class="col-12">
 						<button type="submit" class="buy-now-button">Guardar producto</button>
 					</div>
 				</div>
+				
 			</form>
 		</div>
 
@@ -43,5 +50,6 @@
 	<!-- footer -->
 	<%- include('partials/footer') %>
 
+	<script src="/js/productValidator.js"></script>
 </body>	
 </html>

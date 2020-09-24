@@ -69,6 +69,13 @@ hr {
   z-index: 100;
 }
 
+.main-header_home-link{
+width: 350px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
 .navbar{
   font-size: 13px;
   font-weight: bolder;
@@ -275,7 +282,7 @@ font-size: 13px;
   border-left: 1px solid var(--light-gray);
   padding: 5px;
   height: 100%;
-  background-color: lightgreen;
+  background-color:rgb(203, 236, 203)
 }
 
 .product-detail-title {
@@ -437,6 +444,12 @@ textarea.form-input {
   background-color: var(--green);
 }
 
+.img-responsive{
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*====== Media-Queries ======*/
 

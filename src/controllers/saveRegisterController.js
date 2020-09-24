@@ -29,14 +29,20 @@ const saveRegisterController = {
             avatar:(req.files[0])? req.files[0].filename:"default.png",
             password: bcrypt.hashSync(req.body.password, 10) //para encriptar el password    
         };
-        usuarios.push(nuevoUsuario);//hago un push de todos los usuarios de la base
-        fs.writeFileSync(path.join(__dirname, '../data/users.json') ,JSON.stringify(usuarios)) //convierte en JSON al array
-        res.redirect('/login');
-    }else{
+            usuarios.push(nuevoUsuario);//hago un push de todos los usuarios de la base
+            fs.writeFileSync(path.join(__dirname, '../data/users.json') ,JSON.stringify(usuarios)) //convierte en JSON al array
+            req.session.usuario={
+                id:nuevoUsuario.id,
+                email:nuevoUsuario.email,
+                avatar:nuevoUsuario.avatar
+            }
+           
+            res.redirect('/login');
+      }else{
             res.render("register",{
-            errores:errores.mapped()
-        });
-    }  
+                errores:errores.mapped()
+            });
+     }  
 
     },
     

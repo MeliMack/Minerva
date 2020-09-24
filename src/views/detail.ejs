@@ -19,6 +19,8 @@
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<img src="/images/products/<%= product.image %>" alt="product image" class="product-detail-img">
+					
+					
 					<p class="product-detail-description">
 						<%= product.description %>
 					</p>
@@ -54,10 +56,9 @@
 						<hr>
 
 						<h4>CONFIGURACION DE PRODUCTO</h4>
-						<a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
-						<form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
-							<button type="submit" class="action-button delete">ELIMINAR</button>
-						</form>
+						<a href="/products/edit/<%= product.id %>"><button type="submit" class="action-button edit">EDITAR PRODUCTO</button></button></a>
+						<a href="/products/delete/<%= product.id %>" ><button type="submit"class="action-button edit">ELIMINAR</button></a>
+					
 					</article>
 				</div>
 			</div>
