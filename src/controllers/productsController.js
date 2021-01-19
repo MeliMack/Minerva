@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const db = require("../database/models");
 
 let products = fs.readFileSync( path.join(__dirname, '../data/productsDataBase.json'), "utf8")
 products = JSON.parse(products);
@@ -16,6 +17,8 @@ let ultimoId= function(){
 	}
 	return contador;
 }
+
+
 
 //RENDERIZO LAS VISTAS//
 const productsController = {
@@ -42,7 +45,11 @@ const productsController = {
 
 	// Create - PARA VISUALIZAR EL FORMULARIO
 	create: (req, res) => {
-		res.render("product-create-form");
+		db.product.findAll()
+		.then(function(product){
+			return res.render("product-create-form",{product:product});
+		})
+		
 	},
 	
 	// Create -  METODO POST, PARA COMPLETAR Y ALMACENAR
